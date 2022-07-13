@@ -1,0 +1,42 @@
+<div class="container">
+  <form #f="ngForm" autocomplete="off" (ngSubmit)="salvar(f)">
+
+    <div class="p-grid">
+      <div class="p-col-12">
+        <h1>{{ editando ? 'Edição de' : 'Novo' }} Funcionário</h1>
+      </div>
+
+    
+      <div class="p-col-12 p-fluid">
+        <label>Nome</label>
+        <input pInputText type="text" name="nome"
+          [(ngModel)]="cliente.nome" #nome="ngModel" required minlength="5">
+      </div>
+
+      
+      <div class="p-col-12 p-md-9 p-fluid">
+        <label>CPF</label>
+        <input pInputText type="text" name="cpf"
+          [(ngModel)]="cliente.cpf" #cpf="ngModel" required>
+      </div>
+
+    
+      <div class="p-col-12 p-md-3 p-fluid">
+        <label>Salário</label>
+        <input pInputText type="text" placeholder="0,00" name="salario"
+          [(ngModel)]="cliente.salario" required>
+      </div>
+
+      <div class="p-col-12">
+        <button pButton type="submit" label="Salvar" [disabled]="f.invalid"></button>
+        <button pButton type="button" label="Novo" class="p-button-info"
+          (click)="novo(f)"></button>
+
+          <a [routerLink]="['/clientes']">Voltar para a pesquisa</a>
+      </div>
+    </div>
+
+  </form>
+
+</div>
+

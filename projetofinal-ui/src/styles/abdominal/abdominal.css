@@ -1,0 +1,16 @@
+#cardIniciante {
+    display: inline-block;
+    justify-content: center;
+    list-style-type: none;
+    margin-left: 5%;
+}
+
+
+#cardIniciante:hover{
+    top:-5px;box-shadow:0 2px 2px #666
+}
+
+#modal-modal-title
+{
+    text-align: center;
+}

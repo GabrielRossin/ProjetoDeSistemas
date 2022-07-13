@@ -1,0 +1,75 @@
+<div className="container">
+          <header className="jumbotron">
+            <h3>
+              <strong>{currentUser.username}</strong> Profile
+            </h3>
+          </header>
+          <p>
+            <strong>Token:</strong> {currentUser.accessToken.substring(0, 20)} ...{" "}
+            {currentUser.accessToken.substr(currentUser.accessToken.length - 20)}
+          </p>
+          <p>
+            <strong>Id:</strong> {currentUser.id}
+          </p>
+          <p>
+            <strong>Email:</strong>   }
+          </p>
+          <strong>Authorities:</strong>
+          <ul>
+            {currentUser.roles &&
+              currentUser.roles.map((role: string, index: number) => <li key={index}>{role}</li>)}
+          </ul>
+        </div>
+
+
+
+         <div className="row gx-3 mb-3">
+                         
+                           <div className="col-md-6">
+                               <label className="small mb-1" htmlFor="inputFirstName">First name</label>
+                               <Field className="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" value="Valerie"/>
+                           </div>
+                          
+                           <div className="col-md-6">
+                               <label className="small mb-1" htmlFor="inputLastName">Last name</label>
+                               <Field className="form-control" id="inputLastName" type="text" placeholder="Enter your last name" value="Luna"/>
+                           </div>
+                       </div>
+                      
+                       <div className="row gx-3 mb-3">
+                          
+                           <div className="col-md-6">
+                               <label className="small mb-1" htmlFor="inputOrgName">Organization name</label>
+                               <Field className="form-control" id="inputOrgName" type="text" placeholder="Enter your organization name" value="Start Bootstrap"/>
+                           </div>
+                          
+                           <div className="col-md-6">
+                               <label className="small mb-1" htmlFor="inputLocation">Location</label>
+                               <Field className="form-control" id="inputLocation" type="text" placeholder="Enter your location" value="San Francisco, CA"/>
+                           </div>
+                       </div>
+                       
+                       <div className="mb-3">
+                           <label className="small mb-1" htmlFor="inputEmailAddress">Email address</label>
+                           <Field className="form-control" id="inputEmailAddress" type="email" placeholder="Enter your email address" value="name@example.com"/>
+                       </div>
+                       
+                       <div className="row gx-3 mb-3">
+                          
+                           <div className="col-md-6">
+                               <label className="small mb-1" htmlFor="inputPhone">Phone number</label>
+                               <Field className="form-control" id="inputPhone" type="tel" placeholder="Enter your phone number" value="555-123-4567"/>
+                           </div>
+                          
+                           <div className="col-md-6">
+                               <label className="small mb-1" htmlFor="inputBirthday">Birthday</label>
+                               <Field className="form-control" id="inputBirthday" type="text" name="birthday" placeholder="Enter your birthday" value="06/10/1988"/>
+                           </div>
+                       </div>
+
+
+
+                       <select defaultValue={0}  name="assunto" className="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
+                        <option value={0} disabled >Choose a salutation</option>
+                        {escolhasOptions}
+                    </select>

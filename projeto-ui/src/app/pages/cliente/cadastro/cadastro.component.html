@@ -1,0 +1,97 @@
+<div class="body">
+
+  <div class="container mt-3">
+    <div class="card card-container">
+
+      <h1>Registra-se</h1>
+
+      <form  autocomplete="off" #f="ngForm" >
+        <div>
+              <div class="form-group">
+                <label for="username">Nome</label>
+
+                <input
+                        type="text"
+                        class="form-control"
+                        name="username"
+                        [(ngModel)]="form.username"
+                        required
+                        minlength="3"
+                        maxlength="20"
+                        #nome="ngModel"
+                />
+                <div class="alert-danger" *ngIf="nome.errors && f.submitted">
+                     <div *ngIf="nome.errors['required']">Username is required</div>
+                     <div *ngIf="nome.errors['minlength']">
+                          Username must be at least 3 characters
+                     </div>
+                     <div *ngIf="nome.errors['maxlength']">
+                          Username must be at most 20 characters
+                     </div>
+                </div>
+
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  name="email"
+                  [(ngModel)]="form.email"
+                  required
+                  email
+                  #email="ngModel"
+                />
+                <div class="alert-danger" *ngIf="email.errors && f.submitted">
+                  <div *ngIf="email.errors['required']">Email is required</div>
+                  <div *ngIf="email.errors['email']">
+                    Email must be a valid email address
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="password">Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  name="password"
+                  [(ngModel)]="form.password"
+                  required
+                  minlength="6"
+                  #senha="ngModel"
+                />
+                <div class="alert-danger" *ngIf="senha.errors && f.submitted">
+                  <div *ngIf="senha.errors['required']">Password is required</div>
+                  <div *ngIf="senha.errors['minlength']">
+                    Password must be at least 6 characters
+                  </div>
+                </div>
+              </div>
+
+              <div class="form--input">
+                <button class="btnCadastro"
+                        Button type="submit"
+                        label="Cadastrar"
+                        [disabled]="!f.valid"
+                        (click)="register(nome.value, email.value, senha.value)">
+                        Cadastrar
+               </button>
+              </div>
+
+              <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+                Signup failed!<br />{{ errorMessage }}
+              </div>
+        </div>
+    </form>
+
+    <div class="alert alert-success" *ngIf="isSuccessful">
+      Your registration is successful!
+    </div>
+
+    </div>
+</div>
+
+
+
+</div>

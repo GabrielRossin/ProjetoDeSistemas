@@ -1,0 +1,74 @@
+<nav class="navbar">
+  <div class="container">
+    <div class="p-grid">
+      <div class="p-col-12">
+        <a href="javascript:;" class="navbar-toggle" (click)="exibindoMenu = !exibindoMenu">
+          <i class="pi pi-bars"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <ul class="navbar-menu" [hidden]="!exibindoMenu">
+    <li class="navbar-usuario">{{ authService.jwtPayload?.nome }}</li>
+
+    <!-- Funcionários -->
+    <li class="navbar-menuitem" routerLinkActive="ativo"
+      *ngIf="authService.temPermissao('ROLE_PESQUISAR_cliente')">
+      <a routerLink="/clientes">Lista de funcionários</a>
+    </li>
+
+    <li class="navbar-menuitem" routerLinkActive="ativo"
+      *ngIf="authService.temPermissao('ROLE_CADASTRAR_cliente')">
+      <a routerLink="/clientes/novo">Cadastrar funcionários</a>
+    </li>
+
+    <!-- Grupos -->
+    <li class="navbar-menuitem" routerLinkActive="ativo"
+      *ngIf="authService.temPermissao('ROLE_PESQUISAR_GRUPO')">
+      <a routerLink="/grupos">Lista de grupos</a>
+    </li>
+
+    <li class="navbar-menuitem" routerLinkActive="ativo"
+      *ngIf="authService.temPermissao('ROLE_CADASTRAR_GRUPO')">
+      <a routerLink="/grupos/novo">Cadastrar grupo</a>
+    </li>
+
+    <!-- Projetos -->
+    <li class="navbar-menuitem" routerLinkActive="ativo"
+      *ngIf="authService.temPermissao('ROLE_PESQUISAR_PROJETO')">
+      <a routerLink="/projetos">Lista de projetos</a>
+    </li>
+
+    <li class="navbar-menuitem" routerLinkActive="ativo"
+      *ngIf="authService.temPermissao('ROLE_CADASTRAR_PROJETO')">
+      <a routerLink="/projetos/novo">Cadastrar projeto</a>
+    </li>
+
+    <!-- Setores -->
+    <li class="navbar-menuitem" routerLinkActive="ativo"
+      *ngIf="authService.temPermissao('ROLE_PESQUISAR_SETOR')">
+      <a routerLink="/setores">Lista de setores</a>
+    </li>
+
+    <li class="navbar-menuitem" routerLinkActive="ativo"
+      *ngIf="authService.temPermissao('ROLE_CADASTRAR_SETOR')">
+      <a routerLink="/setores/novo">Cadastrar setor</a>
+    </li>
+
+    <!-- Relação projeto-cliente -->
+    <li class="navbar-menuitem" routerLinkActive="ativo"
+      *ngIf="authService.temPermissao('ROLE_PESQUISAR_PROJETO_cliente')">
+      <a routerLink="/projeto-cliente">Lista da relação projeto-cliente</a>
+    </li>
+
+    <li class="navbar-menuitem" routerLinkActive="ativo"
+      *ngIf="authService.temPermissao('ROLE_CADASTRAR_PROJETO_cliente')">
+      <a routerLink="/projeto-cliente/novo">Cadastrar relação projeto-cliente</a>
+    </li>
+
+    <li class="navbar-menuitem">
+      <a href="/login" (click)="logout()">Logout</a>
+    </li>
+  </ul>
+</nav>

@@ -1,0 +1,78 @@
+{{msg}}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="login-form.component.css">
+</head>
+<body>
+  <div>
+    <div>
+      <img [src]="imageSrc" [alt]="imageAlt" id="ImageLogin">
+    </div>
+
+    <div class="areaLogin">
+
+         <button class="BtnDefaultIcons">
+          <fa-icon [icon]="faFacebookSquare"></fa-icon>
+           <div class="center">
+            
+            Login com Facebook
+           </div>
+         </button>
+
+         <button class="BtnDefaultIcons">
+          <fa-icon [icon]="faGoogle"></fa-icon>
+           <div class="center">Login com Google </div>
+         </button>
+
+         <form action="" autocomplete="off" #f="ngForm">
+           <div class="form--input">
+
+                <h1>Login</h1>
+
+                <div class="form--input">
+                     <input pInputText
+                            type="email"
+                            name="usuario"
+                            id="usuario"
+                            placeholder="E-mail"
+                            ngModel required #usuario
+                     />
+                </div>
+
+                <div class="form--input">
+                     <input pInputText
+                            type="password"
+                            name="senha"
+                            id="senha"
+                            placeholder="Senha"
+                            ngModel required #senha
+                     />
+                 </div>
+
+                 <div class="form--input">
+                      <button class="btnEntrar"
+                              Button type="submit"
+                              label="Login"
+                              [disabled]="!f.valid"
+                              (click)="login(usuario.value, senha.value)"> Login
+                     </button>
+                     <button  type="button" id="btnCadastro" (click)="cadastrar()">
+                       <a>Cadastrar</a>
+                     </button>
+                
+                 </div>
+           </div>
+         </form>
+    </div>
+</div>
+
+
+</body>
+</html>
+
+
